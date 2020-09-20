@@ -13,8 +13,8 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <navbar></navbar>
-                <HomeDescription></HomeDescription>    
+                <navbar/>
+                <HomeDescription/>    
             </div>
         );
     }
