@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import navbar from "./navbar"
+import navbar from "./navbar.js"
 import HomeDescription from "./home-description.js";
 
 class App extends React.Component {
