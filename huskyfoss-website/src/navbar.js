@@ -1,4 +1,4 @@
-class navbar extends React.Component {
+class Navbar extends React.Component {
 
     constructor(props) {
         super(props);
@@ -11,4 +11,4 @@ class navbar extends React.Component {
         );
     }
 }
-export default navbar;
+export default Navbar;
