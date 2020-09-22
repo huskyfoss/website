@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from "./navbar.js"
-import HomeDescription from "./home-description.js";
+import HomePage from "./home-page.js";
 
 class App extends React.Component {
 
@@ -14,7 +14,7 @@ class App extends React.Component {
         return (
             <div>
                 <Navbar/>
-                <HomeDescription/>    
+                <HomePage/>    
             </div>
         );
     }

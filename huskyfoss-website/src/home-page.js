@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Logo from "./pictures/HuskyFOSS-Logo.jpg";
 
-class HomeDescription extends React.Component {
+class HomePage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -30,4 +30,4 @@ class HomeDescription extends React.Component {
         );
     }
 }
-export default HomeDescription;
+export default HomePage;
