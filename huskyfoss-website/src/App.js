@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Navbar from "./navbar.js"
-import HomePage from "./home-page.js";
+import Navbar from "./Navbar.js"
+import HomePage from "./HomePage.js";
 
 class App extends React.Component {
 
@@ -14,7 +14,7 @@ class App extends React.Component {
         return (
             <div>
                 <Navbar/>
-                <HomePage/>    
+                <HomePage/>  
             </div>
         );
     }
