@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: #535353;
+    font-family: 'Open Sans', sans-serif;
+    margin: 8px;
+    background-color: whitesmoke;
+}
+
+h1, h2 {
+    color:black;
+    font-family: 'Encode Sans', sans-serif;
+    font-weight: 900;
+    /*text-transform: uppercase;*/
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-top: 3em;
+}
+
+nav {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: .75rem;
+    margin-right: 1rem;
+    
+
+    display: inline-block;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    padding-top: .5rem;
+    display: inline-block;
+}
+
+.searchBox {
+    float: right;
+}
+
+input {
+    height: 2.5rem;
+    font-size: 1rem;
+    padding: .5rem;
+    vertical-align: bottom;
+}
+
+.searchButton {
+    height: 2.5rem;
+    font-size: 1.5rem;
+    padding: .3rem;
+}
+
+a:hover {
+    color:black;
+    font-weight: 700;
+    text-decoration: underline #b7a57a;
+    border-bottom: solid .1rem #b7a57a;
+    text-underline-offset: .8rem;
+    background-color: lightgreen;
+
+}
+
+span {
+    padding-right: 1em;
+    padding-left: 1em;
+    background-image: url("../img/ischool-symbol-white.png");
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+/* Responsive navigation menu (for mobile devices) */
+@media screen and (max-width: 600px) {
+    nav ul li, .searchBox{
+      float: none;
+      display: block;
+    /* } */
+    
+    /* nav a { */
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: none;
+    }
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
