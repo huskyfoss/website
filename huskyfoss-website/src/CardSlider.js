@@ -5,7 +5,7 @@ import {
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 import * as d3 from 'd3';
-import 'd3';
+//import 'd3';
 
 class CardSlider extends React.Component {
 
@@ -18,7 +18,7 @@ class CardSlider extends React.Component {
     }
 
     componentDidMount() {
-        d3.csv("./data/featured-projects.csv").then((data) => {
+        d3.csv("data/featured-projects.csv").then((data) => {
             console.log(data);
             this.setState({
                 dataset: data
@@ -30,13 +30,11 @@ class CardSlider extends React.Component {
     }
 
     showcase() {
-        console.log(this.dataset)
         var rowCards = []
-        for (var i = 0; i < 3; i++) {
-            if (this.activeIndex >= this.dataset.length) {
-                break;
-            }
-            var row = this.dataset[this.activeIndex]
+        let end = Math.min(3 + this.state.activeIndex, this.state.dataset.length);
+        for (let i = this.state.activeIndex; i < end; i++) {
+            var row = this.state.dataset[this.state.activeIndex]
+            console.log(row);
             rowCards.push(
                 <Col align="center">
                 <Card style={{width:"120%", height:"50%"}}>
@@ -53,9 +51,8 @@ class CardSlider extends React.Component {
                 </Card>
                 </Col>
             )
-            this.incrementActiveIndex();
-            console.log(this.activeIndex);
         }
+        return rowCards;
     }
 
     incrementActiveIndex() {
@@ -65,11 +62,14 @@ class CardSlider extends React.Component {
     }
 
     render() {
+
+        let allRows = this.showcase();
+
         return (
             <Container>
             <Row>
                 <Col align="left"><Button>Previous</Button></Col>
-                {this.showcase()}
+                {allRows}
                 <Col align="right"><Button>Next</Button></Col>
             </Row>
             </Container>
