@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+/* Temp Styling (Change) */
+.container {
+    margin-top: 5vh;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 90%;
+    background-color: purple;
+    border-radius: 25px;
+    margin: 0.5vh 5%;
+    height: 4vh;
+}
+
+nav > a {
+    color: white;
+    margin: auto 100px;
+}
+
+nav > a:hover {
+    color: gold;
+}

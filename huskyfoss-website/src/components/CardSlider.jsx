@@ -1,11 +1,11 @@
-import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import React from "react";
+import { Container, Row, Col } from "reactstrap";
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
-} from 'reactstrap';
-import * as d3 from 'd3';
-//import 'd3';
+} from "reactstrap";
+import * as d3 from "d3";
+//import "d3";
 
 class CardSlider extends React.Component {
 
