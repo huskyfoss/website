@@ -5,7 +5,6 @@ import {
     CardTitle, CardSubtitle, Button
 } from "reactstrap";
 import * as d3 from "d3";
-//import "d3";
 
 class CardSlider extends React.Component {
 
@@ -29,28 +28,62 @@ class CardSlider extends React.Component {
         })
     }
 
+    handlePrev() {
+        if (this.state.activeIndex != 0) {
+            this.decrementActiveIndex()
+        }
+    }
+
+    handleNext() {
+        if (this.state.activeIndex < this.dataset.length) {
+            this.incrementActiveIndex()
+        }
+    }
+ 
     showcase() {
         var rowCards = []
-        let end = Math.min(3 + this.state.activeIndex, this.state.dataset.length);
-        for (let i = this.state.activeIndex; i < end; i++) {
-            var row = this.state.dataset[this.state.activeIndex]
-            console.log(row);
-            rowCards.push(
-                <Col align="center">
-                <Card style={{width:"120%", height:"50%"}}>
-                <CardImg height="180" src={row[4]}/>
-                <CardBody align="center">
-                    <CardTitle>{row[0]}</CardTitle>
-                    <CardSubtitle>{row[1]}</CardSubtitle>
-                    <CardText>{row[2]}</CardText>
-                    <Button onClick={(e) => {
-                        e.preventDefault();
-                        window.open(row[3], "_blank")
-                    }}> Learn More! </Button>
-                </CardBody>
-                </Card>
-                </Col>
-            )
+        // If the sliders have less than three values to show.
+        if (this.state.dataset.length < 3) {
+            for (let i = 0; i < this.dataset.length; i++) {
+                var row = this.state.dataset[i]
+                rowCards.push(
+                    <Col align="center">
+                    <Card style={{width:"120%", height:"50%"}}>
+                    <CardImg height="180" src={row[4]}/>
+                    <CardBody align="center">
+                        <CardTitle>{row[0]}</CardTitle>
+                        <CardSubtitle>{row[1]}</CardSubtitle>
+                        <CardText>{row[2]}</CardText>
+                        <Button onClick={(e) => {
+                            e.preventDefault();
+                            window.open(row[3], "_blank")
+                        }}> Learn More! </Button>
+                    </CardBody>
+                    </Card>
+                    </Col>
+                )
+            }
+        // Otherwise we print the next three values.
+        } else {
+            for (let i = 0; i < 3; i++) {
+                var row = this.state.dataset[this.state.activeIndex + i]
+                rowCards.push(
+                    <Col align="center">
+                    <Card style={{width:"120%", height:"50%"}}>
+                    <CardImg height="180" src={row[4]}/>
+                    <CardBody align="center">
+                        <CardTitle>{row[0]}</CardTitle>
+                        <CardSubtitle>{row[1]}</CardSubtitle>
+                        <CardText>{row[2]}</CardText>
+                        <Button onClick={(e) => {
+                            e.preventDefault();
+                            window.open(row[3], "_blank")
+                        }}> Learn More! </Button>
+                    </CardBody>
+                    </Card>
+                    </Col>
+                )
+            }
         }
         return rowCards;
     }
@@ -58,6 +91,12 @@ class CardSlider extends React.Component {
     incrementActiveIndex() {
         this.setState({
             activeIndex: this.activeIndex++
+        })
+    }
+
+    decrementActiveIndex() {
+        this.setState({
+            activeIndex: this.activeIndex--
         })
     }
 
