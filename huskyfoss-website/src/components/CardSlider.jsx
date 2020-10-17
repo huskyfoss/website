@@ -29,7 +29,7 @@ class CardSlider extends React.Component {
     }
 
     handlePrev() {
-        if (this.state.activeIndex != 0) {
+        if (this.state.activeIndex !== 0) {
             this.decrementActiveIndex()
         }
     }
@@ -44,7 +44,7 @@ class CardSlider extends React.Component {
         var rowCards = []
         // If the sliders have less than three values to show.
         if (this.state.dataset.length < 3) {
-            for (let i = 0; i < this.dataset.length; i++) {
+            for (let i = 0; i < this.state.dataset.length; i++) {
                 var row = this.state.dataset[i]
                 rowCards.push(
                     <Col align="center">
