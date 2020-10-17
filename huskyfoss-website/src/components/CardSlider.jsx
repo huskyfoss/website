@@ -18,7 +18,6 @@ class CardSlider extends React.Component {
 
     componentDidMount() {
         d3.csv("data/featured-projects.csv").then((data) => {
-            console.log(data);
             this.setState({
                 dataset: data
             })
@@ -70,14 +69,14 @@ class CardSlider extends React.Component {
                 rowCards.push(
                     <Col align="center">
                     <Card style={{width:"120%", height:"50%"}}>
-                    <CardImg height="180" src={row[4]}/>
+                    <CardImg height="180" src={row.imgsrc}/>
                     <CardBody align="center">
-                        <CardTitle>{row[0]}</CardTitle>
-                        <CardSubtitle>{row[1]}</CardSubtitle>
-                        <CardText>{row[2]}</CardText>
+                        <CardTitle>{row.title}</CardTitle>
+                        <CardSubtitle>{row.subtitle}</CardSubtitle>
+                        <CardText>{row.descp}</CardText>
                         <Button onClick={(e) => {
                             e.preventDefault();
-                            window.open(row[3], "_blank")
+                            window.open(row.url, "_blank")
                         }}> Learn More! </Button>
                     </CardBody>
                     </Card>
