@@ -28,13 +28,15 @@ class CardSlider extends React.Component {
     }
 
     handlePrev() {
+        console.log(this.state.activeIndex)
         if (this.state.activeIndex !== 0) {
             this.decrementActiveIndex()
         }
     }
 
     handleNext() {
-        if (this.state.activeIndex < this.dataset.length) {
+        console.log(this.state.activeIndex)
+        if (this.state.activeIndex < this.state.dataset.length - 3) {
             this.incrementActiveIndex()
         }
     }
@@ -89,26 +91,26 @@ class CardSlider extends React.Component {
 
     incrementActiveIndex() {
         this.setState({
-            activeIndex: this.activeIndex++
-        })
+            activeIndex: this.state.activeIndex + 1
+        });
     }
 
     decrementActiveIndex() {
         this.setState({
-            activeIndex: this.activeIndex--
+            activeIndex: this.state.activeIndex - 1
         })
     }
 
     render() {
 
         let allRows = this.showcase();
-
+        console.log(this.state.activeIndex)
         return (
             <Container>
             <Row>
-                <Col align="left"><Button>Previous</Button></Col>
+                <Col align="left" onClick={this.handlePrev.bind(this)}><Button>Previous</Button></Col>
                 {allRows}
-                <Col align="right"><Button>Next</Button></Col>
+                <Col align="right" onClick={this.handleNext.bind(this)}><Button>Next</Button></Col>
             </Row>
             </Container>
         );
