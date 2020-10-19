@@ -29,13 +29,13 @@ class HomePage extends React.Component {
                         faculty at UW.
                     </Col>
                     <Col>
-                        <img src={Logo} alt="HuskyFOSS Logo" width="200" height="150"/>
+                        <img src={Logo} alt="HuskyFOSS Logo" align="left" width="200" height="150"/>
                     </Col>
                 </Row>
+                <br></br>
                 <Row>
                     <Col>
                         <h1>Featured Projects</h1>
-                        <br></br>
                     </Col>
                 </Row>
                 <Row>
