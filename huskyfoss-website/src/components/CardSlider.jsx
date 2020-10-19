@@ -17,7 +17,7 @@ class CardSlider extends React.Component {
     }
 
     componentDidMount() {
-        d3.csv("data/featured-projects.csv").then((data) => {
+        d3.csv(this.props.datafile).then((data) => {
             this.setState({
                 dataset: data
             })
@@ -40,25 +40,29 @@ class CardSlider extends React.Component {
             this.incrementActiveIndex()
         }
     }
+
+    handleOnClick = (index) => {
+        window.open(this.state.dataset[index].url, "_blank")
+    }
  
     showcase() {
         var rowCards = []
+        var row;
         // If the sliders have less than three values to show.
         if (this.state.dataset.length < 3) {
             for (let i = 0; i < this.state.dataset.length; i++) {
-                var row = this.state.dataset[i]
+                row = this.state.dataset[i]
                 rowCards.push(
-                    <Col align="center">
+                    <Col key={row.title} className="npcard" align="center">
                     <Card style={{width:"120%", height:"50%"}}>
-                    <CardImg height="180" src={row[4]}/>
+                    <CardImg height="180" src={row.imgsrc}/>
                     <CardBody align="center">
-                        <CardTitle>{row[0]}</CardTitle>
-                        <CardSubtitle>{row[1]}</CardSubtitle>
-                        <CardText>{row[2]}</CardText>
-                        <Button onClick={(e) => {
-                            e.preventDefault();
-                            window.open(row[3], "_blank")
-                        }}> Learn More! </Button>
+                        <CardTitle>{row.title}</CardTitle>
+                        <CardSubtitle>{row.subtitle}</CardSubtitle>
+                        <CardText>{row.descp}</CardText>
+                        <Button color="link" 
+                            onClick={() => this.handleOnClick(this.state.activeIndex + i)}
+                        > Learn More! </Button>
                     </CardBody>
                     </Card>
                     </Col>
@@ -67,19 +71,18 @@ class CardSlider extends React.Component {
         // Otherwise we print the next three values.
         } else {
             for (let i = 0; i < 3; i++) {
-                var row = this.state.dataset[this.state.activeIndex + i]
+                row = this.state.dataset[this.state.activeIndex + i]
                 rowCards.push(
-                    <Col align="center">
-                    <Card style={{width:"120%", height:"50%"}}>
+                    <Col key={row.title} className="npcard" align="center">
+                    <Card style={{width:"120%", height:"100%"}}>
                     <CardImg height="180" src={row.imgsrc}/>
                     <CardBody align="center">
                         <CardTitle>{row.title}</CardTitle>
                         <CardSubtitle>{row.subtitle}</CardSubtitle>
                         <CardText>{row.descp}</CardText>
-                        <Button onClick={(e) => {
-                            e.preventDefault();
-                            window.open(row.url, "_blank")
-                        }}> Learn More! </Button>
+                        <Button color="link" 
+                                onClick={() => this.handleOnClick(this.state.activeIndex + i)}
+                        > Learn More! </Button>
                     </CardBody>
                     </Card>
                     </Col>
@@ -108,9 +111,9 @@ class CardSlider extends React.Component {
         return (
             <Container>
             <Row>
-                <Col align="left" onClick={this.handlePrev.bind(this)}><Button>Previous</Button></Col>
+                <Col className="npbutton" onClick={this.handlePrev.bind(this)}><Button>Previous</Button></Col>
                 {allRows}
-                <Col align="right" onClick={this.handleNext.bind(this)}><Button>Next</Button></Col>
+                <Col className="npbutton" onClick={this.handleNext.bind(this)}><Button>Next</Button></Col>
             </Row>
             </Container>
         );
